@@ -30,7 +30,7 @@ def get_num():
         return num, name_list
     except:
         time.sleep(30)
-        get_num()
+        return get_num()
 
 
 # 发送邮件，暂只支持qq邮箱和163邮箱
