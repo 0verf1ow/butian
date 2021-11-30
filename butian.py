@@ -119,7 +119,6 @@ class Butin():
 
     # 获取所有的通知信息
     def get_id_list(self):
-        if self.run_add_message == 0: return 0
         # 获取的通知类型为 "漏洞"且未读
         data = {"ajax": 1, "id": 1, "status": 0, "page": 1}
         # 获取通知的接口，返回对象类型是字符串
@@ -159,6 +158,7 @@ class Butin():
     # 获取新信息的id
     def get_new_id(self, id_list):
         new_id_lists = self.get_id_list()  # 获取最新的消息列表
+        if self.run_add_message == 0: return 0, 0  # 截取
         old_id_max = max(id_list.keys())  # 取取列表id的最大值
         new_msg_dict = {}
         for new_id in new_id_lists.keys():
