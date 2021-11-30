@@ -119,8 +119,8 @@ class Butin():
 
     # 获取所有的通知信息
     def get_id_list(self):
-        # 获取的通知类型为 "漏洞"且未读
-        data = {"ajax": 1, "id": 1, "status": 0, "page": 1}
+        # 未读消息
+        data = {"ajax": 1, "id": 0, "status": 0, "page": 1}
         # 获取通知的接口，返回对象类型是字符串
         try:
             r = requests.post("https://www.butian.net/Home/Message/lists", headers=self.h, data=data, )
@@ -156,13 +156,12 @@ class Butin():
             return self.get_id_list()
 
     # 获取新信息的id
-    def get_new_id(self, id_list):
+    def get_new_id(self, old_id_list):
         new_id_lists = self.get_id_list()  # 获取最新的消息列表
         if self.run_add_message == 0: return 0, 0  # 截取
-        old_id_max = max(id_list.keys())  # 取取列表id的最大值
         new_msg_dict = {}
         for new_id in new_id_lists.keys():
-            if new_id > old_id_max:  # 如果新列表中有id大于旧列表的最大值，那么说明该id是新的
+            if new_id not in old_id_list.keys():  # id不在上一个返回值的列表中，那么他是新的
                 new_msg_dict[new_id] = new_id_lists[new_id]
         return new_id_lists, new_msg_dict  # 返回的是最新获取的消息列表，和已经新增的消息列表
 
