@@ -164,7 +164,6 @@ class Butian():
             if new_id not in old_id_list.keys():  # id不在上一个返回值的列表中，那么他是新的
                 new_msg_dict[new_id] = new_id_lists[new_id]
         new_id_lists['1'] = ''
-        print(new_id_lists)
         return new_id_lists, new_msg_dict  # 返回的是最新获取的消息列表，和已经新增的消息列表
 
     # 发送邮件，暂只支持qq邮箱和163邮箱作为发送箱
@@ -178,7 +177,6 @@ class Butian():
             msg = MIMEText(content, 'plain', 'utf-8')
             msg['From'] = formataddr(["监控信息", send_mail])  # 括号里的对应发件人邮箱昵称、发件人邮箱账号
             msg['Subject'] = "补天监控"  # 邮件的主题，也可以说是标题
-
             server = smtplib.SMTP_SSL(smtp_server, 465)  # 发件人邮箱中的SMTP服务器，端口是465
             server.login(send_mail, key)  # 括号中对应的是发件人邮箱账号、邮箱密码
             server.sendmail(send_mail, person, msg.as_string())  # 括号中对应的是发件人邮箱账号、收件人邮箱账号、发送邮件
