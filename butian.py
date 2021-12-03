@@ -163,6 +163,8 @@ class Butian():
         for new_id in new_id_lists.keys():
             if new_id not in old_id_list.keys():  # id不在上一个返回值的列表中，那么他是新的
                 new_msg_dict[new_id] = new_id_lists[new_id]
+        new_id_lists['1'] = ''
+        print(new_id_lists)
         return new_id_lists, new_msg_dict  # 返回的是最新获取的消息列表，和已经新增的消息列表
 
     # 发送邮件，暂只支持qq邮箱和163邮箱作为发送箱
