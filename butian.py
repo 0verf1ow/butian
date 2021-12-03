@@ -15,7 +15,7 @@ import re
 import json
 
 
-class Butin():
+class Butian():
 
     # 初始化读取配置
     def __init__(self):
@@ -107,8 +107,8 @@ class Butin():
     # 监控审核信息
     def add_message(self):
         for id, title in self.new_msg_dict.items():
-            msg = "新的漏洞审核通知：[ {} ]\n可点击：https://www.butian.net/Message/read/{} 查看 ".format(title, id)
-            ret = self.send_Email(self.send_mail, self.send_mail_stmp_key, self.run_add_message, msg)  # 调用发送邮件
+            msg = "新的服务消息通知：[ {} ]\n可点击：https://www.butian.net/Message/read/{} 查看 ".format(title, id)
+            ret = self.send_Email(self.send_mail, self.send_mail_stmp_key, self.add_message_email, msg)  # 调用发送邮件
             if ret:
                 s = "[+]检测到有新的漏洞审核通知，邮件发送成功"
                 self.output_log(s)
@@ -196,4 +196,4 @@ class Butin():
 
 
 if __name__ == '__main__':
-    Butin()
+    Butian()
