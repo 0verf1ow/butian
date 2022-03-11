@@ -19,8 +19,12 @@ class Butian():
 
     # 初始化读取配置
     def __init__(self):
-        with open('config.ini', encoding="utf-8") as f:
-            self.config = json.loads(f.read().strip())
+        # 检查配置文件格式
+        try:
+            with open('config.ini', encoding="utf-8") as f:
+                self.config = json.loads(f.read().strip())
+        except:
+            exit("[!] 配置文件格式错误")
         self.send_mail = self.config["send_mail"]  # 发送邮件通知的Email账号
         self.send_mail_stmp_key = self.config["send_mail_stmp_key"]  # 发送邮件通知的Smtp口令
         self.add_company_email = self.config["add_company_email"]  # 需要接收厂商上架通知的邮箱账号
