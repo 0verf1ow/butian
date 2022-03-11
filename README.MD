@@ -26,7 +26,7 @@ pip intsall -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple some
 
 qq邮箱获取smtp口令方法：https://www.cnblogs.com/hai-/p/13490814.html?ivk_sa=1024320u
 
-浏览器获取cookie，只需要 "btuc" 开头的这一个
+浏览器获取cookie，只需要 "btuc" 开头的这一个，建议在浏览器修改下cookie的有效时间，这样不会被浏览器自动清除cookie,就不用频繁更换配置文件中的cookie.
 
 ![image-20211126214955229](http://0verflow-img-submit.oss-cn-beijing.aliyuncs.com/img/image-20211126214955229.png)
 
