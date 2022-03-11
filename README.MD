@@ -58,12 +58,6 @@ qq邮箱获取smtp口令方法：https://www.cnblogs.com/hai-/p/13490814.html?iv
 
 ### 运行程序：
 
-运行监控程序前请先运行配置文件检查，如无报错再运行butian.py，有报错的话就是配置文件格式错误，请仔细检查配置文件
-
-```
-python3 check_config.py
-```
-
 linux(放到后台运行):
 
 ```linux
