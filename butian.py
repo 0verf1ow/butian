@@ -1,7 +1,7 @@
 # !/usr/bin/python3
 # coding: utf-8
 """
-date: 2021.11.29
+date: 2022.03.13
 监控补天专属厂商上架，或者监控用户漏洞审核信息
 如果报错信息显示："错误信息：'utf-8' codec can't decode byte 0xbb in position 0: invalid start byte"，请放linux上跑
 """
@@ -110,16 +110,16 @@ class Butian():
 
     # 监控审核信息
     def add_message(self):
+        msg = "有新的服务消息通知：可点击 https://www.butian.net/Message 查看\n"
         for id, title in self.new_msg_dict.items():
-            msg = "新的服务消息通知：[ {} ]\n可点击：https://www.butian.net/Message/read/{} 查看 ".format(title, id)
-            ret = self.send_Email(self.send_mail, self.send_mail_stmp_key, self.add_message_email, msg)  # 调用发送邮件
-            if ret:
-                s = "[+]检测到有新的漏洞审核通知，邮件发送成功"
-                self.output_log(s)
-                return 0
-            else:
-                s = "[!]检测到有新的漏洞审核通知，但邮件发送失败"
-                self.output_log(s)
+            msg += title + "\n"
+        ret = self.send_Email(self.send_mail, self.send_mail_stmp_key, self.add_message_email, msg)  # 调用发送邮件
+        if ret:
+            s = "[+]检测到有新的漏洞审核通知，邮件发送成功"
+            self.output_log(s)
+        else:
+            s = "[!]检测到有新的漏洞审核通知，但邮件发送失败"
+            self.output_log(s)
 
     # 获取所有的通知信息
     def get_id_list(self):
